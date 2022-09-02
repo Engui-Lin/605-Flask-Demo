@@ -1,8 +1,6 @@
 # 605-Flask-Demo
 Flask app that mimics bit.ly functionality
 
-This app is also deployed on Heroku: https://flaskdemo605.herokuapp.com/
-
 # Introductions to run locally
 
 The following instruction works with `Python v3.8` and MacOS.
