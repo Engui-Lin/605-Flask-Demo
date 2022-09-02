@@ -67,5 +67,21 @@ def redirect_url(short_id):
         flash('Invalid URL')
         return redirect('/')
 
+@app.route('/db')
+def demodb():
+    links = ShortUrls.query.order_by(ShortUrls.created_at).all()
+    return render_template('demodb.html', links = links)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    link_to_delete = ShortUrls.query.get_or_404(id)
+
+    try:
+        db.session.delete(link_to_delete)
+        db.session.commit()
+        return redirect('/db')
+    except:
+        return 'There was a problem deleting that link'
+
 if __name__ == "__main__":
     app.run(debug=True)

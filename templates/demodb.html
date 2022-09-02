@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="/" class="btn btn-primary">Return</a>
+<br><br>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Original URL</th>
+        <th scope="col">Short URL</th>
+        <th scope="col">created</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {% if links|length < 1 %}
+    <h4 style="text-align: center">Database is empty!</h4>
+    {% else %}
+    <tbody>
+        {% for link in links %}
+        <tr>
+            <td>{{ link.id }}</td>
+            <td><a href="{{link.original_url}}" target="_blank">{{ link.original_url }}</a></td>
+            <td><a href="{{request.host_url}}{{ link.short_id }}" target="_blank">{{ link.short_id }}</a></td>
+            <td>{{ link.created_at }}</td>
+            <td><a href="/delete/{{link.id}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    {% endif %}
+  </table>
+{% endblock %}
