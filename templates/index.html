@@ -27,10 +27,16 @@
             </div>
             </form>
 
-            {% if short_url %}
             <hr>
-            <span><a href="{{ short_url }}" target="_blank">{{ short_url }}</a></span>
-            {% endif %}
+            <div class="card text-bg-primary mb-3" style="max-width: 100%">
+                <div class="card-header">Output</div>
+                {% if short_url %}
+                <div class="card-body">
+                    <span><a href="{{ short_url }}" target="_blank">{{ short_url }}</a></span>
+                </div>
+                {% endif %}
+              </div>            
+
         </div>
         <div class="col-md-2"></div>
     </div>
